@@ -92,7 +92,8 @@ class CommonTests:
         super().setUp()
         self.loop = asyncio.new_event_loop()
         asyncio.set_event_loop(self.loop)
-        self.protocol = WebSocketCommonProtocol()
+        # Disable pings to make it easier to test what frames are sent exactly.
+        self.protocol = WebSocketCommonProtocol(ping_interval=None)
         self.transport = TransportMock()
         self.transport.setup_mock(self.loop, self.protocol)
 

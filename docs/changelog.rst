@@ -8,6 +8,13 @@ Changelog
 
 *In development*
 
+* websockets now sends Ping frames at regular intervals and closes the
+  connection if it doesn't receive a corresponding Pong frame.
+
+  You can adjust this behavior with the ``ping_interval`` and ``ping_timeout``
+  arguments of :func:`~client.connect()` and :func:`~server.serve()`. They
+  default to 20 seconds. Setting them to ``None`` disables this new behavior.
+
 6.0
 ...
 
